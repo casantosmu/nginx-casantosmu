@@ -1,0 +1,7 @@
+# This just prevents Nginx picking a random default server if it doesn't know which
+# server block to send a request to
+server {
+  listen      80 default_server;
+  server_name _;
+  return      444; # "Connection closed without response"
+}
