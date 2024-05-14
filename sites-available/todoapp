@@ -17,6 +17,9 @@ server {
 
     server_name todoapp.casantosmu.com;
 
+    auth_basic "Authentication";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+
     location / {
         proxy_pass http://todoapp;
         limit_req zone=one burst=10 nodelay;
