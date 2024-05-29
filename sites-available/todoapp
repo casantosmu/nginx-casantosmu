@@ -1,6 +1,6 @@
 limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
 
-upstream todoapp{
+upstream todoapp {
     server 127.0.0.1:5000;
 }
 
@@ -20,11 +20,10 @@ server {
     auth_basic "Authentication";
     auth_basic_user_file /etc/nginx/.htpasswd;
 
-    add_header Content-Security-Policy "default-src 'none'; script-src 'self' 'nonce-$request_id'; connect-src 'self'; img-src 'self'; style-src 'self'; font-src 'self';";
+    add_header Content-Security-Policy "default-src 'none'; script-src 'self' 'nonce-$request_id'; connect-src 'self'; img-src 'self'; style-src 'self'; font-src 'self'; frame-ancestors 'self'; form-action 'self';";
     add_header Referrer-Policy "no-referrer";
     add_header Strict-Transport-Security "max-age=63072000" always;
     add_header X-Content-Type-Options "nosniff";
-    add_header X-Frame-Options "SAMEORIGIN" always;
 
     location / {
         proxy_pass http://todoapp;
