@@ -11,9 +11,7 @@ server {
 }
 
 server {
-    # SSL Configuration
     listen 134.122.95.251:443 ssl http2;
-    include snippets/certs.conf;
 
     server_name todoapp.casantosmu.com;
 
