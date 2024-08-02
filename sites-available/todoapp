@@ -1,5 +1,3 @@
-limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
-
 upstream todoapp {
     server 127.0.0.1:5000;
 }
@@ -25,7 +23,6 @@ server {
 
     location / {
         proxy_pass http://todoapp;
-        limit_req zone=one burst=10 nodelay;
         include snippets/headers_global.conf;
    }
 }
